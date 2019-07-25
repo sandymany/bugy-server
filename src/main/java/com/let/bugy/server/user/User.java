@@ -27,6 +27,7 @@ public class User{
 			count.setString (1,username);count.setString(2,password);
 			ResultSet res = count.executeQuery();
 			res.next();
+			//test
 			numberFromRS = res.getString("count(*)");//kasnije se provjerava, ako je 1, onda se nemre registrirati
 			count.close();
 
