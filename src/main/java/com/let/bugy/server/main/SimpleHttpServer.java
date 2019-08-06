@@ -1,32 +1,32 @@
 package com.let.bugy.server.main;
 
 import com.let.bugy.server.getbugs.GetBugs;
+import com.let.bugy.server.home.SearchBugsHandler;
 import com.let.bugy.server.infohandler.InfoHandler;
 import com.let.bugy.server.user.Database;
 import com.let.bugy.server.user.SignIn;
-import com.let.bugy.server.user.SignUp;
+import com.let.bugy.server.user.SignUpHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class SimpleHttpServer {
 
   public static void main(String[] args) throws Exception {
+
     Initialize.initializeTable();
     Database.printTable("users");
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
     server.createContext("/info", new InfoHandler());//instance klasa
     server.createContext("/login", new SignIn());
-    server.createContext("/register",new SignUp());
+    server.createContext("/register",new SignUpHandler());
     server.createContext("/getBugs",new GetBugs());
+    server.createContext("/home/searchBugs",new SearchBugsHandler());
     server.setExecutor(null); // creates a default executor
     server.start();
     System.out.println("The server is running");

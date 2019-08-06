@@ -2,8 +2,6 @@ package com.let.bugy.server.user;
 import com.let.bugy.server.main.SimpleHttpServer;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
-
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.Map;
 
@@ -19,6 +17,6 @@ public class SignIn implements HttpHandler {
     response.append(login.doesExist());//responds true if user exists, otherwise-false
     //TODO if login is successful, user gets his account properties in json
     SimpleHttpServer.writeResponse(httpExchange, response.toString());
-    Database.printTable("users");
+    //Database.printTable("users");
   }
 }

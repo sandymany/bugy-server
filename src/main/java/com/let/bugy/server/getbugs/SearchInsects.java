@@ -6,28 +6,19 @@ import org.json.JSONObject;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class SearchInsects {
 	String value;
 	List<String> columnNamesList = new ArrayList<>();
-	List<HashMap<String,String>> dictionaryList = new ArrayList<>();
-	HashMap<String,String> dictionary = new HashMap<>();
 
-	SearchInsects (String value) {
+	public SearchInsects(String value) {
 		this.value = value;
-		try{
-			//this.conn = DriverManager.getConnection(DB_URL);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public String search () {
-		List<String> metaArray = new ArrayList<>();
 
-		System.out.println("Connecting to database...");
+		System.out.println("Connecting to database, getting bugs...");
 		try {
 			Connection conn = Database.getConnection();
 			PreparedStatement st = conn.prepareStatement ("SELECT * FROM insecta",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);

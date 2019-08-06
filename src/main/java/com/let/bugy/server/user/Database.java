@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Database {
+    static String numberFromRS;
 
     /**
      * @return databaseConnection
@@ -19,6 +20,45 @@ public class Database {
         Class.forName(JDBC_DRIVER);
         Connection conn = DriverManager.getConnection(DB_URL);
         return(conn);
+    }
+
+    public static String exists (String username,String password) {
+        System.out.println("Connecting to user database, checking if exists...");
+        try (Connection conn = getConnection()){
+            PreparedStatement count = conn.prepareStatement ("SELECT COUNT (*) FROM users WHERE `username`= ? AND `password`= ? LIMIT 1",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            count.setString (1,username);count.setString(2,password);
+            ResultSet res = count.executeQuery();
+            res.next();
+            //test
+            numberFromRS = res.getString("count(*)");//kasnije se provjerava, ako je 1, onda se nemre registrirati
+            count.close();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(numberFromRS.equals("0")) {
+            return("false");
+        }
+        return("true");
+    }
+
+    public static void addUser (String username, String password) {
+        System.out.println("adding user to SQL base...");
+        try (Connection conn = Database.getConnection();
+             PreparedStatement createTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL AUTO_INCREMENT, username VARCHAR (20),password VARCHAR(20))")){
+            createTable.execute();
+            PreparedStatement insert = conn.prepareStatement("INSERT INTO users (username,password) VALUES (?,?)");
+            insert.setString(1,username);
+            insert.setString(2,password);
+            insert.executeUpdate();
+
+            PreparedStatement all = conn.prepareStatement ("SELECT * FROM users",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = all.executeQuery();
+            all.close();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

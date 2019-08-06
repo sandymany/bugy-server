@@ -14,7 +14,7 @@ import java.lang.Boolean;
 import java.util.Map;
 
 
-public class SignUp implements HttpHandler {
+public class SignUpHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange he) throws IOException {
     try (InputStreamReader reader = new InputStreamReader(he.getRequestBody(), StandardCharsets.UTF_8);
@@ -35,7 +35,7 @@ public class SignUp implements HttpHandler {
       // RESPONSE Body
       //stvaranje objekta za usera
       Register registration = new Register (credentials);
-      String response = Boolean.toString(registration.doesExist());
+      String response = registration.doesExist();
       int contentLength = response.length();
       //RESPONSE Headers (sending response body length)
       Headers responseHeaders = he.getResponseHeaders();
@@ -46,6 +46,6 @@ public class SignUp implements HttpHandler {
     }catch (Exception e){
       e.printStackTrace();
     }
-    Database.printTable("users");
+    //Database.printTable("users");
   }
 }

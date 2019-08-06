@@ -7,9 +7,9 @@ import java.io.IOException;
 public class GetBugs implements HttpHandler {
   @Override
   public void handle(HttpExchange httpExchange) throws IOException {
-    StringBuilder response = new StringBuilder();
     String toSearch = httpExchange.getRequestURI().getQuery();
     SearchInsects Search = new SearchInsects (toSearch);
+    StringBuilder response = new StringBuilder();
     response.append(Search.search());
     SimpleHttpServer.writeResponse(httpExchange, response.toString());
   }

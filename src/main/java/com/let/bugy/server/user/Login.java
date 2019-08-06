@@ -4,7 +4,7 @@ import java.util.Map;
 public class Login {
 	String username;
 	String password;
-	boolean doesUserExists;
+	String doesUserExists;
 	User user;
 	Integer ID;
 
@@ -14,11 +14,12 @@ public class Login {
 		user = new User(username,password);
 	}
 
-	public boolean doesExist (){
+	public String doesExist (){
 		User user = new User (username,password);
 		doesUserExists = user.exists();
-		if (doesUserExists == true) {
-			user.setSessionID(username,password);
+		if (doesUserExists.equals("true")) {
+			user.setSessionCookie(user);
+			return(user.sessionCookie);
 		}
 		return(doesUserExists);
 	}
