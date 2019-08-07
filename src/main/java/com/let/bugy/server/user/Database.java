@@ -44,9 +44,7 @@ public class Database {
 
     public static void addUser (String username, String password) {
         System.out.println("adding user to SQL base...");
-        try (Connection conn = Database.getConnection();
-             PreparedStatement createTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL AUTO_INCREMENT, username VARCHAR (20),password VARCHAR(20))")){
-            createTable.execute();
+        try (Connection conn = Database.getConnection()){
             PreparedStatement insert = conn.prepareStatement("INSERT INTO users (username,password) VALUES (?,?)");
             insert.setString(1,username);
             insert.setString(2,password);

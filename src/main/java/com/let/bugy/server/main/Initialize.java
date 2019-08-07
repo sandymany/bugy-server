@@ -12,6 +12,9 @@ public class Initialize {
         try (Connection conn = Database.getConnection();
              PreparedStatement createTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL AUTO_INCREMENT, username VARCHAR (20),password VARCHAR(20))")){
             createTable.execute();
+            PreparedStatement createUsersTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL AUTO_INCREMENT, username VARCHAR (20),password VARCHAR(20))");
+            createUsersTable.execute();
+            createUsersTable.close();
         }catch (Exception e) {
             e.printStackTrace();
         }

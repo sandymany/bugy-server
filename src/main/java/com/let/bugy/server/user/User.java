@@ -5,6 +5,7 @@ public class User{
 	String username;
 	String password;
 	String sessionCookie;
+	Date date;
 	static Set<String> idSet = new HashSet<>();
 
 	User (String username,String password) {
@@ -26,9 +27,14 @@ public class User{
 		}
 		idSet.add(sessionCookie);
 		System.out.println("ID za "+username+": "+sessionCookie);
-		Sessions.addToActiveUsers (sessionCookie, this); //dok je login/register uspjesan automatski se dodaje na listu aktivnih usera
+		Sessions.addToActiveUsers (sessionCookie, user); //dok je login/register uspjesan automatski se dodaje na listu aktivnih usera
 		//TODO: dok se logira u ovoj metodi mu se automatski posalje njegovo stanje racuna
 	}
+	/*
+	public String toString () {
+		return (username+"\t"+password);
+	}
+	*/
 
 
 

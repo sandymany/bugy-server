@@ -5,7 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.util.Map;
 
-public class SignIn implements HttpHandler {
+public class SignInHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange httpExchange) throws IOException{
 
@@ -18,5 +18,6 @@ public class SignIn implements HttpHandler {
     //TODO if login is successful, user gets his account properties in json
     SimpleHttpServer.writeResponse(httpExchange, response.toString());
     //Database.printTable("users");
+    Sessions.printActiveUsers();
   }
 }

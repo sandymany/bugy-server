@@ -6,7 +6,6 @@ public class Login {
 	String password;
 	String doesUserExists;
 	User user;
-	Integer ID;
 
 	Login(Map<String,String> credentialsMap){
 		username = credentialsMap.get("username");
@@ -23,9 +22,10 @@ public class Login {
 		}
 		return(doesUserExists);
 	}
-
+/*
 	@Override
 	public String toString() {
 		return("username: "+username+"\n"+"password: "+password+"\n"+doesUserExists);
 	}
+*/
 }

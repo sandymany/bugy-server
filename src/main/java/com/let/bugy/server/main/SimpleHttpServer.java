@@ -4,7 +4,8 @@ import com.let.bugy.server.getbugs.GetBugs;
 import com.let.bugy.server.home.SearchBugsHandler;
 import com.let.bugy.server.infohandler.InfoHandler;
 import com.let.bugy.server.user.Database;
-import com.let.bugy.server.user.SignIn;
+import com.let.bugy.server.user.LogOutHandler;
+import com.let.bugy.server.user.SignInHandler;
 import com.let.bugy.server.user.SignUpHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
@@ -19,13 +20,15 @@ public class SimpleHttpServer {
 
   public static void main(String[] args) throws Exception {
 
+    //System.out.println(date2.getTime()-date.getTime());
     Initialize.initializeTable();
     Database.printTable("users");
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
     server.createContext("/info", new InfoHandler());//instance klasa
-    server.createContext("/login", new SignIn());
+    server.createContext("/login", new SignInHandler());
     server.createContext("/register",new SignUpHandler());
     server.createContext("/getBugs",new GetBugs());
+    server.createContext("/logOut",new LogOutHandler());
     server.createContext("/home/searchBugs",new SearchBugsHandler());
     server.setExecutor(null); // creates a default executor
     server.start();

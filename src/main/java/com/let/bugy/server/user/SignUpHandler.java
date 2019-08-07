@@ -20,10 +20,8 @@ public class SignUpHandler implements HttpHandler {
     try (InputStreamReader reader = new InputStreamReader(he.getRequestBody(), StandardCharsets.UTF_8);
         OutputStream os = he.getResponseBody())
     {
-
       Map <String,String> credentials = new HashMap<>();
-      //REQUEST HEADERS
-      Headers requestHeaders = he.getRequestHeaders();
+      Headers requestHeaders = he.getRequestHeaders(); //REQUEST HEADERS
       // REQUEST Body
       StringBuilder body = new StringBuilder();
       char[] buffer = new char[100];
@@ -43,6 +41,7 @@ public class SignUpHandler implements HttpHandler {
       //write RESPONSE BODY
       os.write(response.toString().getBytes(Charset.forName("UTF-8")));
       he.close();
+      Sessions.printActiveUsers();
     }catch (Exception e){
       e.printStackTrace();
     }

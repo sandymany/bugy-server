@@ -15,9 +15,10 @@ public class SearchBugsHandler implements HttpHandler {
         String searchRequest = httpExchange.getRequestURI().getQuery();
         Map<String,String> parameters = SimpleHttpServer.queryToStrStrMap(searchRequest);
         StringBuilder response = new StringBuilder();
+        System.out.println(parameters);
         //if za provjeru session cookia
         if (Sessions.isActive(parameters.get("sessionCookie")).equals("active")) {
-            System.out.println("searching..");
+            System.out.println("searching bugs for "+Sessions.activeUsers.get(parameters.get("sessionCookie")));
             Sessions.sendToEnd(parameters.get("sessionCookie"));
             SearchInsects Search = new SearchInsects (parameters.get("toSearch"));
             response.append(Search.search());
