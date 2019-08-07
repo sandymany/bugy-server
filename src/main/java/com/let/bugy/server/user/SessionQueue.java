@@ -1,55 +1,10 @@
-import java.util.Date;
+package com.let.bugy.server.user;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-/**
- * Izbriši i dodaj svojeg pravog usera nakomn kaj skužiš kak radi.
- */
-class User {
-
-	/**
-	 * Inače dodaj gettere i settere umjesto public varijabli.
-	 */
-	public long timestamp;
-	public String username;
-	public String sessionID;
-	/**
-	 * SessionQueue na kojem je ovaj korisnik.
-	 */
-	public SessionQueue mySessionQueue;
-	/**
-	 * Ovo je true/false da thread dok odsleepa zna dal je korisnik napravil neku akciju.
-	 * Seta se na true u actionOccurred, a na false ga seta Queue dok ga HEAD 'ulovi'.
-	 */
-	public AtomicBoolean actionSeen = new AtomicBoolean(false);
-
-	public User(String username, String sessionID) {
-		this.username = username;
-		this.sessionID = sessionID;
-		actionOccured();
-	}
-	/**
-	 * Metoda koja se poziva dok si dobila request od korisnika.
-	 * Ona bude se pobrinula da korisnika
-	 */
-	public void actionOccured(){
-		timestamp = System.currentTimeMillis();
-		actionSeen.set(false);
-		if(mySessionQueue != null) { // Provjera dal je uopće na nekom queueu, inače bu hitalo NullPointerException
-			mySessionQueue.refreshUser(this);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return username + " : " + ((System.currentTimeMillis()-timestamp)/1000.) + " sekundi prošlo.";
-	}
-}
 
 public class SessionQueue {
 
@@ -154,6 +109,50 @@ public class SessionQueue {
 			}
 		}).start();
 
+	}
+
+	/**
+	 * Izbriši i dodaj svojeg pravog usera nakomn kaj skužiš kak radi.
+	 */
+	static class User {
+
+		/**
+		 * Inače dodaj gettere i settere umjesto public varijabli.
+		 */
+		public long timestamp;
+		public String username;
+		public String sessionID;
+		/**
+		 * SessionQueue na kojem je ovaj korisnik.
+		 */
+		public SessionQueue mySessionQueue;
+		/**
+		 * Ovo je true/false da thread dok odsleepa zna dal je korisnik napravil neku akciju.
+		 * Seta se na true u actionOccurred, a na false ga seta Queue dok ga HEAD 'ulovi'.
+		 */
+		public AtomicBoolean actionSeen = new AtomicBoolean(false);
+
+		public User(String username, String sessionID) {
+			this.username = username;
+			this.sessionID = sessionID;
+			actionOccured();
+		}
+		/**
+		 * Metoda koja se poziva dok si dobila request od korisnika.
+		 * Ona bude se pobrinula da korisnika
+		 */
+		public void actionOccured(){
+			timestamp = System.currentTimeMillis();
+			actionSeen.set(false);
+			if(mySessionQueue != null) { // Provjera dal je uopće na nekom queueu, inače bu hitalo NullPointerException
+				mySessionQueue.refreshUser(this);
+			}
+		}
+
+		@Override
+		public String toString() {
+			return username + " : " + ((System.currentTimeMillis()-timestamp)/1000.) + " sekundi prošlo.";
+		}
 	}
 
 }

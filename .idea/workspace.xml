@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02f15447-5aa0-4c4e-b32c-18f8b81efbdf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOutHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/home/SearchBugsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/home/SearchBugsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/Initialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/Initialize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/SimpleHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/SimpleHttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOut.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Sessions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Sessions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignUpHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Sessions.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
@@ -59,8 +50,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/SimpleHttpServer.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
-              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOutHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Register.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignUpHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="30" column="7" lean-forward="true" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,7 +151,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionChecker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOut.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOutHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignUpHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Login.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/Initialize.java" />
@@ -112,6 +159,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/SimpleHttpServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Sessions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionQueue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java" />
       </list>
     </option>
   </component>
@@ -229,6 +278,16 @@
             </path>
             <path>
               <item name="bugy-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bugy-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="SessionQueue.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="bugy-server" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -343,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565076345537</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="dodano puno toga.">
+      <created>1565162282021</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1565162282021</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -356,10 +422,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="-4" width="1920" height="1084" extended-state="6" />
+    <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14941302" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14941302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -384,7 +450,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Messages" order="8" side_tool="true" weight="0.25133404" />
-      <window_info active="true" anchor="right" id="Run" order="9" side_tool="true" visible="true" weight="0.3153682" />
+      <window_info anchor="right" id="Run" order="9" side_tool="true" visible="true" weight="0.3153682" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -479,23 +545,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionChecker.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Register.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignUpHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/Initialize.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -520,16 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -541,16 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="29" column="114" selection-start-line="29" selection-start-column="114" selection-end-line="29" selection-end-column="114" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOutHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -581,6 +610,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding>
+            <element signature="method#User#0;class#User#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Sessions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -592,20 +631,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/LogOutHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        <state relative-caret-position="198">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
-            <element signature="method#User#0;class#User#0" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/Register.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignUpHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="30" column="7" lean-forward="true" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SignInHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/main/SimpleHttpServer.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/let/bugy/server/user/SessionQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
