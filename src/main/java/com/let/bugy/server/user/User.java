@@ -20,6 +20,7 @@ public class User{
 	public String exists () {
 		return(Database.exists(username,password));
 	}
+
 	public void setSessionCookie (User user) {
 		sessionCookie = UUID.randomUUID().toString();
 		while (idSet.contains(sessionCookie)==true) {
@@ -27,8 +28,19 @@ public class User{
 		}
 		idSet.add(sessionCookie);
 		System.out.println("ID za "+username+": "+sessionCookie);
+
+		//SessionQueue queue = new SessionQueue(5000);
+
 		Sessions.addToActiveUsers (sessionCookie, user); //dok je login/register uspjesan automatski se dodaje na listu aktivnih usera
 		//TODO: dok se logira u ovoj metodi mu se automatski posalje njegovo stanje racuna
+	}
+
+	public String getUsername () {
+		return (username);
+	}
+
+	public String getPassword () {
+		return (password);
 	}
 	/*
 	public String toString () {

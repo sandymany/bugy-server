@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SearchInsects {
 	String value;
-	List<String> columnNamesList = new ArrayList<>();
+	static List<String> columnNamesList = new ArrayList<>();
 
 	public SearchInsects(String value) {
 		this.value = value;
@@ -49,7 +49,7 @@ public class SearchInsects {
 		return (null);
 	}
 
-	public String toJSON (ResultSet rs) throws SQLException{
+	public static String toJSON (ResultSet rs) throws SQLException{
 		JSONObject searchJSON = new JSONObject ();//glavni objekt u kojem bude lista objekti
 		JSONArray JSONarray = new JSONArray ();
 		JSONObject insect;

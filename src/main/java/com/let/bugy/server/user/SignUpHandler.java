@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class SignUpHandler implements HttpHandler {
   @Override
-  public void handle(HttpExchange he) throws IOException {
+  public void handle(HttpExchange he) {
     try (InputStreamReader reader = new InputStreamReader(he.getRequestBody(), StandardCharsets.UTF_8);
         OutputStream os = he.getResponseBody())
     {
@@ -29,20 +29,31 @@ public class SignUpHandler implements HttpHandler {
       while ((read = reader.read(buffer)) != -1) {
         body.append(buffer, 0, read);
       }
+      String response;
+      //ako korisnik vec postoji->true,ako je invalid credentials->false,else->cookie
       credentials = SimpleHttpServer.queryToStrStrMap (body.toString());//credentials for Register class
-      // RESPONSE Body
-      //stvaranje objekta za usera
-      Register registration = new Register (credentials);
-      String response = registration.doesExist();
+      if (credentials.get("username").replaceAll("\\s","").isEmpty() ||
+          credentials.get("password").replaceAll("\\s","").isEmpty() ||
+          credentials.get("username").length() > 15 || credentials.get("password").length() > 15 ){
+        response = "false";
+        System.out.println("RESPONDING: "+response);
+      }
+      else {
+        // RESPONSE Body
+        //stvaranje objekta za usera
+        Register registration = new Register(credentials);
+        response = registration.doesExist();
+        System.out.println("RESPONDING: "+response);
+      }
       int contentLength = response.length();
       //RESPONSE Headers (sending response body length)
-      Headers responseHeaders = he.getResponseHeaders();
+      //Headers responseHeaders = he.getResponseHeaders();
       he.sendResponseHeaders(HttpURLConnection.HTTP_OK, contentLength);
       //write RESPONSE BODY
-      os.write(response.toString().getBytes(Charset.forName("UTF-8")));
+      os.write(response.getBytes(Charset.forName("UTF-8")));
       he.close();
       Sessions.printActiveUsers();
-    }catch (Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     //Database.printTable("users");

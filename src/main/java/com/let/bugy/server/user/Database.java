@@ -2,10 +2,7 @@ package com.let.bugy.server.user;
 
 import com.let.bugy.server.features.PrettyPrinter;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class Database {
     static String numberFromRS;
@@ -45,27 +42,44 @@ public class Database {
     public static void addUser (String username, String password) {
         System.out.println("adding user to SQL base...");
         try (Connection conn = Database.getConnection()){
+            //1. ADD USER TO SQL BASE
             PreparedStatement insert = conn.prepareStatement("INSERT INTO users (username,password) VALUES (?,?)");
             insert.setString(1,username);
             insert.setString(2,password);
             insert.executeUpdate();
+            insert.close();
 
-            PreparedStatement all = conn.prepareStatement ("SELECT * FROM users",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            PreparedStatement all = conn.prepareStatement ("SELECT * FROM users where `username`=? and `password`=?",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            all.setString(1,username);
+            all.setString(2,password);
             ResultSet rs = all.executeQuery();
+            rs.next();
+            //System.out.println("number: "+rs.getString("ID"));
+            //2. MAKE NEW TABLE SPECIFICALLY FOR NEW USER
+            System.out.println("SHOULD ADD: "+rs.getString("ID"));
+            makeNewTable(conn,rs.getString("ID"));
             all.close();
+
 
         }catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public static void makeNewTable (Connection conn,String tableName) throws SQLException {
+        PreparedStatement newTable = conn.prepareStatement("CREATE TABLE `"+tableName+"` (bug_id INTEGER, description VARCHAR(MAX))");
+        newTable.execute();
+        newTable.close();
+        System.out.println("NEW TABLE:");
+        printTable(tableName);
+    }
     /**
      * method that prints some table from database
      * @param tableName
      */
     public static void printTable (String tableName) {
         try (Connection conn = getConnection();
-             PreparedStatement getTable = conn.prepareStatement("SELECT * FROM "+tableName, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE)){
+             PreparedStatement getTable = conn.prepareStatement("SELECT * FROM `"+tableName+"`", ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE)){
             ResultSet rs = getTable.executeQuery();
             System.out.println("tablica "+tableName);
             PrettyPrinter.printQuery(rs);
@@ -76,9 +90,10 @@ public class Database {
     }
     public static void deleteTable(String tableName) {
         System.out.println ("DELETING TABLE");
-        try (Connection conn = getConnection();
-             PreparedStatement delTable = conn.prepareStatement("DROP TABLE "+tableName)) {
+        try (Connection conn = getConnection()) {
+            PreparedStatement delTable = conn.prepareStatement("DROP TABLE `"+tableName+"`");
             delTable.executeUpdate();
+            delTable.close();
 
         } catch (Exception e) {
             e.printStackTrace();

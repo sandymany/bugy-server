@@ -2,6 +2,7 @@ package com.let.bugy.server.main;
 
 import com.let.bugy.server.getbugs.GetBugs;
 import com.let.bugy.server.home.SearchBugsHandler;
+import com.let.bugy.server.home.UserPropertiesHandler;
 import com.let.bugy.server.infohandler.InfoHandler;
 import com.let.bugy.server.user.Database;
 import com.let.bugy.server.user.LogOutHandler;
@@ -19,8 +20,7 @@ import java.util.*;
 public class SimpleHttpServer {
 
   public static void main(String[] args) throws Exception {
-
-    //System.out.println(date2.getTime()-date.getTime());
+    //Database.deleteTable("users");
     Initialize.initializeTable();
     Database.printTable("users");
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
@@ -30,11 +30,11 @@ public class SimpleHttpServer {
     server.createContext("/getBugs",new GetBugs());
     server.createContext("/logOut",new LogOutHandler());
     server.createContext("/home/searchBugs",new SearchBugsHandler());
+    server.createContext("/home/getProperties",new UserPropertiesHandler());
     server.setExecutor(null); // creates a default executor
     server.start();
     System.out.println("The server is running");
   }
-
   // http://localhost:8000/info
 
   public static void writeResponse(HttpExchange httpExchange, String response) throws IOException {
