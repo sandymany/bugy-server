@@ -4,7 +4,6 @@ import com.let.bugy.server.main.SimpleHttpServer;
 import com.let.bugy.server.user.Sessions;
 import com.sun.net.httpserver.HttpExchange;
 
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.charset.Charset;
@@ -13,6 +12,8 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.net.HttpURLConnection;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -23,7 +24,16 @@ public class UserPropertiesHandler implements HttpHandler {
              OutputStream os = he.getResponseBody())
         {
             Map <String,String> parameters;
-            //Headers requestHeaders = he.getRequestHeaders(); //REQUEST HEADERS
+            Headers requestHeaders = he.getRequestHeaders(); //REQUEST HEADERS
+
+            Map<String,List<String>> mapa = new HashMap<>();
+
+            for (Map.Entry<String, List<String>> header : requestHeaders.entrySet()) {
+                mapa.put(header.getKey(), header.getValue());
+            }
+            System.out.println("HEDERI: ");
+            System.out.println(mapa);
+
             // REQUEST Body
             StringBuilder body = new StringBuilder();
             char[] buffer = new char[100];
@@ -31,17 +41,17 @@ public class UserPropertiesHandler implements HttpHandler {
             while ((read = reader.read(buffer)) != -1) {
                 body.append(buffer, 0, read);
             }
+            System.out.println("BODY: "+body);
             String response;
-            parameters = SimpleHttpServer.queryToStrStrMap (body.toString());
-            System.out.println("PROVJERAVAM SESSION COOKIE"+parameters);
+
             // RESPONSE Body
-            if (Sessions.isActive(parameters.get("sessionCookie")).equals("active")) {
+            if (Sessions.isActive(mapa.get("Sessioncookie").get(0)).equals("active")) {
                 System.out.println();
-                response = UserProperties.getUserProperties(parameters.get("sessionCookie"));
+                response = UserProperties.getUserProperties(mapa.get("Sessioncookie").get(0));
                 System.out.println("response: "+response);
             }
-            else {
-                response = "false cookie";
+            else { //ako sessionCookie nije dobar, uvijek responda s "false"
+                response = "false";
             }
             int contentLength = response.length();
 
@@ -56,5 +66,6 @@ public class UserPropertiesHandler implements HttpHandler {
             e.printStackTrace();
         }
         //Database.printTable("users");
+
     }
 }

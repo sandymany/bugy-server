@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class SignInHandler implements HttpHandler {
   @Override
-  public void handle(HttpExchange he) throws IOException{
+  public void handle(HttpExchange he) throws IOException {
 
     try (InputStreamReader reader = new InputStreamReader(he.getRequestBody(), StandardCharsets.UTF_8);
          OutputStream os = he.getResponseBody())
@@ -52,7 +52,6 @@ public class SignInHandler implements HttpHandler {
     //System.out.println(login); //printa podatke o useru (overridan toString)
     System.out.println();
     response.append(login.doesExist());//responds true if user exists, otherwise-false
-    //TODO if login is successful, user gets his account properties in json
     SimpleHttpServer.writeResponse(httpExchange, response.toString());
     //Database.printTable("users");
     Sessions.printActiveUsers();

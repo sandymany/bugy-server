@@ -1,8 +1,12 @@
 package com.let.bugy.server.user;
 
 import com.let.bugy.server.features.PrettyPrinter;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
     static String numberFromRS;
@@ -73,10 +77,7 @@ public class Database {
         System.out.println("NEW TABLE:");
         printTable(tableName);
     }
-    /**
-     * method that prints some table from database
-     * @param tableName
-     */
+
     public static void printTable (String tableName) {
         try (Connection conn = getConnection();
              PreparedStatement getTable = conn.prepareStatement("SELECT * FROM `"+tableName+"`", ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE)){
@@ -88,6 +89,7 @@ public class Database {
             e.printStackTrace();
         }
     }
+
     public static void deleteTable(String tableName) {
         System.out.println ("DELETING TABLE");
         try (Connection conn = getConnection()) {
@@ -98,5 +100,56 @@ public class Database {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void deleteUser (String ID) {
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement deleteUser = conn.prepareStatement("DELETE FROM users WHERE id = ?")) {
+            deleteUser.setString(1,ID);
+            deleteUser.executeUpdate();
+            deleteTable(ID);
+            printTable("users");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String tableToJSON (String tableName) {
+
+        List<String> columnNamesList = new ArrayList<>();
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement table = conn.prepareStatement("SELECT * FROM `"+tableName+"`", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+            //table.setString(1, tableName);
+            ResultSet rs = table.executeQuery();
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            int numberOfColumns = rsmd.getColumnCount();
+            for (int i = 1; i<=numberOfColumns;i++) {
+                columnNamesList.add(rsmd.getColumnName(i));
+            }
+
+            System.out.println("COLUMNS: "+columnNamesList);
+            JSONObject tablicaJSON = new JSONObject();//glavni objekt u kojem bude lista objekti
+            JSONArray JSONarray = new JSONArray();
+            JSONObject row;
+            while (rs.next()) {
+                row = new JSONObject();
+                for (String column : columnNamesList) {
+                    row.put(column, (rs.getString(column)));
+                }
+                JSONarray.put(row);
+            }
+            tablicaJSON.put("table", JSONarray);
+
+            return (tablicaJSON.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (null);
     }
 }

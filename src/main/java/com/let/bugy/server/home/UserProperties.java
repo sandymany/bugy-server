@@ -28,10 +28,9 @@ public class UserProperties {
             st.setString(2,password);
             ResultSet rs = st.executeQuery();
             rs.next();
-            System.out.println("user that wants smthing ID: "+rs.getString("ID"));
 
-            //userProperties = SearchInsects.toJSON(rs);
-            userProperties = "userovi kukci";
+            System.out.println("GETTING PROPERTIES ON ID: "+rs.getString("ID"));
+            userProperties = Database.tableToJSON(rs.getString("ID"));
 
         }catch (Exception e) {
             e.printStackTrace();

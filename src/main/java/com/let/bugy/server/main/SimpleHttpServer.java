@@ -21,6 +21,7 @@ public class SimpleHttpServer {
 
   public static void main(String[] args) throws Exception {
     //Database.deleteTable("users");
+    //Database.deleteUser("6");
     Initialize.initializeTable();
     Database.printTable("users");
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
