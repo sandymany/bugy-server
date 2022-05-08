@@ -1,0 +1,4 @@
+#!/bin/bash
+#rm -r bin/*
+echo "Running"
+java -cp $(python3 scripts/listlibs.py) main.SimpleHttpServer

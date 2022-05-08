@@ -1,0 +1,4 @@
+bin/
+resources/*.html
+resources/*.json
+*.jar

@@ -1,0 +1,14 @@
+BUGY
+
+1. GETTING SOME DATA
+
+- scraping classification of bugs with python from page BugGuide (writing to json file)
+- filling SQL database with insects from json (more than 35 000 insect species)
+
+2. SETTIG UP SEVER
+
+- simple http server that listens to user request and returns data based on endpoints and parameters
+- ENDPOINTS: /getBugs (+ one parameter), /info (no parameters),
+- added SearchInsects class that receives search parameter from server and returns search result as json string
+
+-

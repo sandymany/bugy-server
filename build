@@ -1,0 +1,5 @@
+#!/bin/bash
+#rm -r bin/*
+rm -rf bin
+mkdir bin
+javac -d bin -cp $(python3 scripts/listlibs.py) -Xlint src/main/SimpleHttpServer.java
